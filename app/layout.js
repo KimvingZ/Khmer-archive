@@ -1,4 +1,5 @@
 import collection from "../collection.config.js";
+import SiteHeader from "../components/SiteHeader.js";
 
 export const metadata = {
   title: `${collection.name} — Khmer Living Archive`,
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
           minHeight: "100vh",
         }}
       >
+        <SiteHeader />
         {children}
       </body>
     </html>
