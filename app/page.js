@@ -1,6 +1,7 @@
+import { Suspense } from "react";
 import collection from "../collection.config.js";
-import entries from "../data/entries.js";
-import ArchiveSearch from "../components/ArchiveSearch.js";
+import ArchiveEntries from "../components/ArchiveEntries.js";
+import ArchiveNotice from "../components/ArchiveNotice.js";
 
 const styles = {
   wrap: {
@@ -43,12 +44,6 @@ const styles = {
     fontSize: 16,
     margin: "6px 0 0",
   },
-  count: {
-    fontFamily: "'Courier New', monospace",
-    fontSize: 14,
-    color: "#2EE6A8",
-    marginTop: 48,
-  },
   footer: {
     marginTop: 64,
     paddingTop: 24,
@@ -74,11 +69,12 @@ export default function Home() {
         <p style={styles.cardValue}>{collection.source}</p>
       </div>
 
-      <p style={styles.count}>
-        games in the archive: {entries.length} (for now)
-      </p>
-
-      <ArchiveSearch entries={entries} />
+      {/* Everything above arrives at once; it comes from collection.config.js.
+          The games come from Supabase, so they get a loading notice of
+          their own instead of holding the whole page back. */}
+      <Suspense fallback={<ArchiveNotice kind="loading" />}>
+        <ArchiveEntries />
+      </Suspense>
 
       <footer style={styles.footer}>
         Built in ICT 340 — Vibe Coding, American University of Phnom Penh, Fall
