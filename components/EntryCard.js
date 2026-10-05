@@ -1,4 +1,9 @@
+import Link from "next/link";
 import Highlight from "./Highlight.js";
+import EntryPhoto from "./EntryPhoto.js";
+import EntryFacts from "./EntryFacts.js";
+import EntryCredit from "./EntryCredit.js";
+import WatchLink from "./WatchLink.js";
 
 const KHMER_STACK =
   "'Noto Sans Khmer', 'Khmer OS Battambang', 'Khmer OS', 'Leelawadee UI', 'Nokora', sans-serif";
@@ -19,6 +24,7 @@ const styles = {
     margin: "0 0 4px",
   },
   title: { fontSize: 20, fontWeight: 700, margin: "0 0 12px" },
+  titleLink: { color: "inherit", textDecoration: "none", borderBottom: "1px solid #2E3644" },
   description: {
     fontSize: 16,
     color: "#C7CEDA",
@@ -40,31 +46,12 @@ const styles = {
     paddingLeft: 14,
     borderLeft: "2px solid #2E3644",
   },
-  facts: { display: "flex", flexWrap: "wrap", gap: "10px 24px", marginBottom: 16 },
-  fact: { fontSize: 13, color: "#97A1B3", margin: 0 },
-  factLabel: { color: "#5A6373" },
-  credit: {
-    fontFamily: "'Courier New', monospace",
-    fontSize: 12,
-    color: "#97A1B3",
-    borderTop: "1px solid #2E3644",
-    paddingTop: 14,
-    margin: 0,
-  },
-  unsourced: { color: "#C9A227" },
 };
 
-function Fact({ label, value, query }) {
-  if (!value) return null;
-  return (
-    <p style={styles.fact}>
-      <span style={styles.factLabel}>{label} </span>
-      <Highlight text={value} query={query} />
-    </p>
-  );
-}
-
+// One game. On the home page (`link`) the title opens the game's own page;
+// on that page (`large`) the photo is shown whole instead of cropped.
 export default function EntryCard({
+  id,
   title,
   khmerTitle,
   description,
@@ -75,17 +62,30 @@ export default function EntryCard({
   place,
   contributor,
   source,
+  photoUrl,
+  youtubeUrl,
   query,
+  link,
+  large,
 }) {
+  const name = <Highlight text={title} query={query} />;
+
   return (
     <article style={styles.card}>
+      <EntryPhoto url={photoUrl} title={title} large={large} />
       {khmerTitle ? (
         <h2 lang="km" style={styles.khmerTitle}>
           <Highlight text={khmerTitle} query={query} />
         </h2>
       ) : null}
       <h3 style={styles.title}>
-        <Highlight text={title} query={query} />
+        {link ? (
+          <Link href={`/entries/${id}`} style={styles.titleLink}>
+            {name}
+          </Link>
+        ) : (
+          name
+        )}
       </h3>
 
       <p style={styles.description}>
@@ -101,26 +101,15 @@ export default function EntryCard({
         </>
       ) : null}
 
-      <div style={styles.facts}>
-        <Fact label="Players" value={players} query={query} />
-        <Fact label="You need" value={materials} query={query} />
-        <Fact label="Played at" value={occasion} query={query} />
-        <Fact label="Where" value={place} query={query} />
-      </div>
-
-      <p style={styles.credit}>
-        {contributor ? (
-          <>
-            Told by <Highlight text={contributor} query={query} />
-          </>
-        ) : (
-          // `source` is deliberately not highlighted: ArchiveSearch does not
-          // search it, so marking it would promise a match that is not there.
-          <span style={styles.unsourced}>
-            {source || "No contributor recorded yet"}
-          </span>
-        )}
-      </p>
+      <EntryFacts
+        players={players}
+        materials={materials}
+        occasion={occasion}
+        place={place}
+        query={query}
+      />
+      <WatchLink url={youtubeUrl} />
+      <EntryCredit contributor={contributor} source={source} query={query} />
     </article>
   );
 }

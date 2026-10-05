@@ -45,6 +45,9 @@ export default async function SiteHeader() {
         <div style={styles.right}>
           {user ? (
             <>
+              <Link href="/contribute" style={styles.link}>
+                Add a game
+              </Link>
               <span style={styles.email}>{user.email}</span>
               <LogoutButton />
             </>

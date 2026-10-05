@@ -1,15 +1,7 @@
 import { createClient } from "../lib/supabase/server.js";
+import { CARD_COLUMNS } from "../lib/entryColumns.js";
 import ArchiveSearch from "./ArchiveSearch.js";
 import ArchiveNotice from "./ArchiveNotice.js";
-
-// The table's columns are snake_case, the Postgres habit. The components have
-// used camelCase since week 3. "khmerTitle:khmer_title" renames a column on
-// its way out of Supabase, so nothing downstream of this file has to change.
-// owner and created_at are left out on purpose: the page shows neither, and
-// whatever is selected here is sent to every visitor's browser.
-const COLUMNS =
-  "id, title, khmerTitle:khmer_title, description, howToPlay:how_to_play, " +
-  "players, materials, occasion, place, contributor, source";
 
 const styles = {
   count: {
@@ -27,7 +19,7 @@ export default async function ArchiveEntries() {
   const supabase = await createClient();
   const { data: entries, error } = await supabase
     .from("entries")
-    .select(COLUMNS)
+    .select(CARD_COLUMNS)
     .order("created_at", { ascending: false })
     // supabase-js already retries a failed read three times (after 1s, 2s,
     // 4s), so an asleep project gives up in about 7 seconds on its own. A
