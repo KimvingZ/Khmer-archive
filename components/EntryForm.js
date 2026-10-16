@@ -46,7 +46,7 @@ export default function EntryForm({ entry = null }) {
     const first = Object.keys(found)[0];
     if (first) {
       document.getElementById(first)?.focus();
-      return setMessage("Some fields need fixing first. Each one says what to change.");
+      return setMessage("ព័ត៌មានខ្លះត្រូវកែជាមុនសិន។ ចន្លោះនីមួយៗប្រាប់ថាត្រូវកែអ្វី · Some fields need fixing first. Each one says what to change.");
     }
 
     setSaving(true);

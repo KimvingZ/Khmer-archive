@@ -41,7 +41,7 @@ export default async function EditEntryPage({ params }) {
   let body;
   if (!entry) body = <ArchiveNotice kind="unavailable" />;
   else if (!auth.user) body = <LoginNote action="edit this game" />;
-  else if (auth.user.id !== owner) body = <p style={styles.note}>Only the person who added this game can edit it.</p>;
+  else if (auth.user.id !== owner) body = <p style={styles.note}>មានតែអ្នកដែលបានបន្ថែមល្បែងនេះប៉ុណ្ណោះ ដែលអាចកែប្រែវាបាន · Only the person who added this game can edit it.</p>;
   else body = <EntryForm entry={saved} />;
 
   return (

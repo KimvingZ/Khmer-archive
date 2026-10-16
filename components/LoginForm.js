@@ -20,7 +20,7 @@ export default function LoginForm() {
     // here? Wrong password and unknown address must be indistinguishable
     // from the outside. The real error is not logged to the console either
     // — the console is not private, and it would leak the same answer.
-    if (error) return "Invalid email or password.";
+    if (error) return "អ៊ីមែល ឬពាក្យសម្ងាត់មិនត្រឹមត្រូវ · Invalid email or password.";
 
     router.push("/");
     // The header is a Server Component. It only learns about the new session

@@ -19,14 +19,14 @@ export default function SignupForm() {
     // the fixable cause (password length) without confirming or denying that
     // the address is known.
     if (error) {
-      return "Could not create that account. Check the email address, and use a password of at least 6 characters.";
+      return "មិនអាចបង្កើតគណនីនេះបានទេ។ សូមពិនិត្យអ៊ីមែល ហើយប្រើពាក្យសម្ងាត់យ៉ាងហោចណាស់ ៦ តួអក្សរ · Could not create that account. Check the email address, and use a password of at least 6 characters.";
     }
 
     // No session means "Confirm email" is still on in the Supabase
     // dashboard. Redirecting to a logged-out home page would just look
     // broken, so say what actually has to happen next.
     if (!data.session) {
-      return "Account created. Open the confirmation link in your email, then log in.";
+      return "បានបង្កើតគណនីហើយ។ សូមបើកតំណបញ្ជាក់ក្នុងអ៊ីមែលរបស់អ្នក រួចចូលគណនី · Account created. Open the confirmation link in your email, then log in.";
     }
 
     router.push("/");

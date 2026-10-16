@@ -46,7 +46,7 @@ export default function DeleteEntryButton({ id }) {
     if (error || !data?.length) {
       console.error("delete failed:", error || "no row came back");
       setStage("idle");
-      return setMessage("That change wasn't saved.");
+      return setMessage("ការកែប្រែនេះមិនបានរក្សាទុកទេ · That change wasn't saved.");
     }
     // The entry is gone, so its photo would only be litter in the bucket.
     removePhoto(supabase, data[0].photo_url);
