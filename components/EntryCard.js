@@ -49,7 +49,7 @@ const styles = {
 };
 
 // One game. On the home page (`link`) the title opens the game's own page;
-// on that page (`large`) the photo is shown whole instead of cropped.
+// on that page (`large`) the photo is shown bigger.
 export default function EntryCard({
   id,
   title,

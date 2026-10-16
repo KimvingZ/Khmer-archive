@@ -1,15 +1,18 @@
 import { PHOTO_URL_PREFIX } from "../lib/photos.js";
 
 const styles = {
+  // Every photo keeps its own shape: never cropped, never stretched past its
+  // real size, and centred in the space it has.
   photo: {
     display: "block",
-    width: "100%",
+    width: "auto",
+    maxWidth: "100%",
+    height: "auto",
+    margin: "0 auto 18px",
     borderRadius: 8,
-    backgroundColor: "#14181F",
-    marginBottom: 18,
   },
-  card: { height: 220, objectFit: "cover" },
-  page: { maxHeight: 520, objectFit: "contain" },
+  card: { maxHeight: 420 },
+  page: { maxHeight: 520 },
   missing: {
     fontFamily: "'Courier New', monospace",
     fontSize: 12,
