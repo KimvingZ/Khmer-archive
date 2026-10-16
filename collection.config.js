@@ -19,7 +19,7 @@ const collection = {
 
   // Where does your knowledge come from? A person, a place, a community.
   source:
-    "Family, neighbours, and the people still playing these games at New Year — interviews still to be gathered.",
+    "My mother, grandmother and grandfather, who taught me these games, the family and friends I still play them with every year, and the published sources named on each game.",
 };
 
 export default collection;
