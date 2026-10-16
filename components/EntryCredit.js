@@ -40,7 +40,9 @@ export default function EntryCredit({ contributor, source, query }) {
         </p>
       ) : null}
       {contributor ? null : (
-        <p style={styles.unsourced}>No one has been interviewed for this game yet.</p>
+        <p style={styles.unsourced}>
+          <span lang="km">មិនទាន់បានសម្ភាសអ្នកណាម្នាក់អំពីល្បែងនេះនៅឡើយទេ</span> · No one has been interviewed for this game yet.
+        </p>
       )}
     </div>
   );

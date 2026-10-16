@@ -21,10 +21,10 @@ function Fact({ label, value, query }) {
 export default function EntryFacts({ players, materials, occasion, place, query }) {
   return (
     <div style={styles.facts}>
-      <Fact label="Players" value={players} query={query} />
-      <Fact label="You need" value={materials} query={query} />
-      <Fact label="Played at" value={occasion} query={query} />
-      <Fact label="Where" value={place} query={query} />
+      <Fact label="Players · អ្នកលេង" value={players} query={query} />
+      <Fact label="You need · សម្ភារៈ" value={materials} query={query} />
+      <Fact label="Played at · ពេលលេង" value={occasion} query={query} />
+      <Fact label="Where · ទីកន្លែង" value={place} query={query} />
     </div>
   );
 }
