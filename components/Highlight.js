@@ -8,6 +8,14 @@ const styles = {
   },
 };
 
+// A Khmer syllable is several characters: a consonant, then vowel signs and
+// marks, and a subscript consonant after a coeng (្). A <mark> that stops in
+// the middle of one makes the browser draw it in broken pieces, so every
+// match is widened to whole syllables before it is marked.
+const KHMER_SIGN = /[\u17B4-\u17D3\u17DD]/;
+const COENG = "\u17D2";
+const insideSyllable = (text, i) => KHMER_SIGN.test(text[i] || "") || text[i - 1] === COENG;
+
 // Marks every occurrence of the search word inside one piece of text. It does
 // not decide what matched — ArchiveSearch already did that. This only shows
 // the reader where, so a hit buried in a paragraph stops looking like magic.
@@ -26,13 +34,17 @@ export default function Highlight({ text, query }) {
   let at = haystack.indexOf(needle);
 
   while (at !== -1) {
-    if (at > cursor) parts.push(value.slice(cursor, at));
+    let start = at;
+    let end = at + needle.length;
+    while (start > cursor && insideSyllable(value, start)) start--;
+    while (end < value.length && insideSyllable(value, end)) end++;
+    if (start > cursor) parts.push(value.slice(cursor, start));
     parts.push(
-      <mark key={at} style={styles.mark}>
-        {value.slice(at, at + needle.length)}
+      <mark key={start} style={styles.mark}>
+        {value.slice(start, end)}
       </mark>
     );
-    cursor = at + needle.length;
+    cursor = end;
     at = haystack.indexOf(needle, cursor);
   }
   parts.push(value.slice(cursor));
