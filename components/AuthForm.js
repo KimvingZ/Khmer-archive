@@ -1,29 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import AuthField from "./AuthField.js";
 
 const styles = {
   form: { marginTop: 32 },
-  label: {
-    display: "block",
-    fontFamily: "'Courier New', monospace",
-    fontSize: 12,
-    letterSpacing: 1,
-    color: "#97A1B3",
-    margin: "0 0 8px",
-  },
-  input: {
-    width: "100%",
-    boxSizing: "border-box",
-    padding: "14px 16px",
-    fontSize: 16,
-    color: "#E8EDF2",
-    backgroundColor: "#1C222C",
-    border: "1px solid #2E3644",
-    borderRadius: 10,
-    outline: "none",
-    marginBottom: 20,
-  },
   button: {
     width: "100%",
     padding: "14px 16px",
@@ -77,31 +58,22 @@ export default function AuthForm({
   // same Khmer and English sentence as every other failure.
   return (
     <form onSubmit={handleSubmit} noValidate style={styles.form}>
-      <label htmlFor="email" style={styles.label}>
-        EMAIL · អ៊ីមែល
-      </label>
-      <input
+      <AuthField
         id="email"
         type="email"
+        label="EMAIL · អ៊ីមែល"
         autoComplete="email"
-        required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        style={styles.input}
       />
-
-      <label htmlFor="password" style={styles.label}>
-        {passwordLabel}
-      </label>
-      <input
+      <AuthField
         id="password"
         type="password"
+        label={passwordLabel}
         autoComplete={autoComplete}
-        required
         minLength={minLength}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        style={styles.input}
       />
 
       <button
