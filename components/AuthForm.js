@@ -72,8 +72,11 @@ export default function AuthForm({
     setBusy(false);
   }
 
+  // noValidate turns off the browser's pop-up bubbles, which only speak the
+  // browser's language. A mistake goes through onSubmit instead and gets the
+  // same Khmer and English sentence as every other failure.
   return (
-    <form onSubmit={handleSubmit} style={styles.form}>
+    <form onSubmit={handleSubmit} noValidate style={styles.form}>
       <label htmlFor="email" style={styles.label}>
         EMAIL · អ៊ីមែល
       </label>
