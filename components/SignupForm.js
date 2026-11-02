@@ -1,17 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "../lib/supabase/client.js";
 import { UNREACHABLE } from "../lib/authMessages.js";
 import AuthForm from "./AuthForm.js";
+import DoneNote from "./DoneNote.js";
 
-// Supabase's two ways of saying the email could not go out: too many sent this
+// Supabase's two ways of saying no email went out: too soon or too many this
 // hour, or an address its built-in mailer refuses. Neither says anything about
 // who has an account, so they can have a true sentence of their own.
 const MAIL_TROUBLE = ["over_email_send_rate_limit", "email_address_not_authorized"];
 
 export default function SignupForm() {
   const router = useRouter();
+  const [sentTo, setSentTo] = useState(null);
 
   async function signUp({ email, password }) {
     const supabase = createClient();
@@ -24,7 +27,7 @@ export default function SignupForm() {
 
     if (error?.name === "AuthRetryableFetchError") return UNREACHABLE;
     if (MAIL_TROUBLE.includes(error?.code)) {
-      return "មិនអាចផ្ញើអ៊ីមែលបញ្ជាក់បានទេឥឡូវនេះ។ សូមសាកល្បងម្ដងទៀតពេលក្រោយ · The confirmation email couldn't be sent just now. Please try again later.";
+      return "មិនទាន់អាចផ្ញើអ៊ីមែលថ្មីបានទេ។ បើអ្នកទើបតែស្នើ សូមពិនិត្យប្រអប់អ៊ីមែល និង Spam។ បើមិនដូច្នោះទេ សូមសាកល្បងម្ដងទៀតបន្តិចក្រោយ · No new email could be sent just now. If you only just asked, check your inbox and Spam. Otherwise try again in a little while.";
     }
 
     // Every other failure gets one sentence. It names the fixable cause
@@ -37,15 +40,26 @@ export default function SignupForm() {
     // "Confirm email" is on, so a new account has no session until its link
     // has been opened. An address that already has an account lands here too:
     // Supabase answers exactly as if it were new and sends no email, which is
-    // what stops this form telling strangers who is registered. So this
-    // sentence has to be true for both.
+    // what stops this form telling strangers who is registered. So DoneNote's
+    // words have to be true for both.
     if (!data.session) {
-      return "សូមពិនិត្យអ៊ីមែលរបស់អ្នក ហើយបើកតំណបញ្ជាក់ រួចចូលគណនី។ បើមានគណនីរួចហើយ សូមចូលគណនីតែម្ដង · Check your email and open the confirmation link, then log in. If you already have an account, just log in.";
+      setSentTo(email);
+      return null;
     }
 
     router.push("/");
     router.refresh();
     return null;
+  }
+
+  if (sentTo) {
+    return (
+      <DoneNote
+        title="សូមពិនិត្យអ៊ីមែល · Check your email"
+        khmer={`យើងបានផ្ញើតំណបញ្ជាក់ទៅ ${sentTo}។ សូមបើកតំណនោះ ដើម្បីបញ្ចប់ការបង្កើតគណនី។ បើរកមិនឃើញ សូមមើលក្នុង Spam។ បើអ្នកមានគណនីនេះរួចហើយ នឹងគ្មានអ៊ីមែលផ្ញើមកទេ សូមចូលគណនីតែម្ដង។`}
+        english={`We sent a confirmation link to ${sentTo}. Open it to finish creating your account. Can't find it? Look in Spam. If you already have an account here, no email is sent: just log in.`}
+      />
+    );
   }
 
   return (
