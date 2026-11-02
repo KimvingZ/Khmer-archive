@@ -49,17 +49,19 @@ const styles = {
 // Two fields, a busy state and one message line. It does not know Supabase
 // exists. Whoever renders it passes an `onSubmit` that takes
 // { email, password } and returns a sentence to show, or null when it worked
-// and the page is already on its way somewhere else.
+// and the page is already on its way somewhere else. `notice` is a sentence
+// that is already showing when the page opens.
 export default function AuthForm({
   submitLabel,
   passwordLabel = "PASSWORD · ពាក្យសម្ងាត់",
   minLength,
   autoComplete,
+  notice = null,
   onSubmit,
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState(notice);
   const [busy, setBusy] = useState(false);
 
   async function handleSubmit(event) {
