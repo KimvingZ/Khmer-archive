@@ -5,7 +5,7 @@ const styles = {
     fontFamily: "'Courier New', monospace",
     fontSize: 12,
     lineHeight: 1.6,
-    color: "#97A1B3",
+    color: "#C7CEDA",
     borderTop: "1px solid #2E3644",
     paddingTop: 14,
     display: "flex",
@@ -13,7 +13,7 @@ const styles = {
     gap: 6,
   },
   line: { margin: 0 },
-  label: { color: "#5A6373", letterSpacing: 1, marginRight: 8 },
+  label: { color: "#97A1B3", letterSpacing: 1, marginRight: 8 },
   // The archive's amber for "read this, it is not finished".
   unsourced: { margin: 0, color: "#C9A227" },
 };

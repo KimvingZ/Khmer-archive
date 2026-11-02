@@ -49,7 +49,7 @@ const styles = {
     paddingTop: 24,
     borderTop: "1px solid #2E3644",
     fontSize: 13,
-    color: "#5A6373",
+    color: "#97A1B3",
   },
 };
 

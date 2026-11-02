@@ -10,10 +10,10 @@ const styles = {
     fontFamily: "'Courier New', monospace",
     fontSize: 12,
     letterSpacing: 1,
-    color: "#5A6373",
+    color: "#97A1B3",
     margin: "0 0 6px",
   },
-  hint: { fontSize: 13, color: "#5A6373", margin: "0 0 8px" },
+  hint: { fontSize: 13, color: "#97A1B3", margin: "0 0 8px" },
   input: {
     width: "100%",
     boxSizing: "border-box",

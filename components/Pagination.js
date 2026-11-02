@@ -22,7 +22,7 @@ const styles = {
   },
   current: { color: "#0E1116", backgroundColor: "#2EE6A8", borderColor: "#2EE6A8", fontWeight: 700 },
   spent: { color: "#5A6373", cursor: "not-allowed" },
-  status: { fontFamily: MONO, fontSize: 13, color: "#5A6373", textAlign: "center", margin: "12px 0 0" },
+  status: { fontFamily: MONO, fontSize: 13, color: "#97A1B3", textAlign: "center", margin: "12px 0 0" },
 };
 
 // Controls only. It does not know what is being paged or how many fit on a

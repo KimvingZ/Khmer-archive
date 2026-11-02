@@ -34,7 +34,7 @@ const styles = {
     fontFamily: "'Courier New', monospace",
     fontSize: 12,
     letterSpacing: 1,
-    color: "#5A6373",
+    color: "#97A1B3",
     marginBottom: 8,
   },
   input: {

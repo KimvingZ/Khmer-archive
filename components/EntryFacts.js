@@ -2,8 +2,8 @@ import Highlight from "./Highlight.js";
 
 const styles = {
   facts: { display: "flex", flexWrap: "wrap", gap: "10px 24px", marginBottom: 16 },
-  fact: { fontSize: 13, color: "#97A1B3", margin: 0 },
-  factLabel: { color: "#5A6373" },
+  fact: { fontSize: 13, color: "#C7CEDA", margin: 0 },
+  factLabel: { color: "#97A1B3" },
 };
 
 function Fact({ label, value, query }) {

@@ -14,7 +14,7 @@ const styles = {
     border: "1px dashed #2E3644",
     borderRadius: 10,
   },
-  label: { fontFamily: MONO, fontSize: 11, letterSpacing: 1, color: "#5A6373" },
+  label: { fontFamily: MONO, fontSize: 11, letterSpacing: 1, color: "#97A1B3" },
   edit: {
     fontFamily: MONO,
     fontSize: 13,
