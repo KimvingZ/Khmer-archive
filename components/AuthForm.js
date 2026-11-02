@@ -27,8 +27,8 @@ const styles = {
   message: { fontSize: 15, color: "#C9A227", lineHeight: 1.6, margin: "20px 0 0" },
 };
 
-// Two fields, a busy state and one message line. It does not know Supabase
-// exists. Whoever renders it passes an `onSubmit` that takes
+// One or two fields, a busy state and one message line. It does not know
+// Supabase exists. Whoever renders it passes an `onSubmit` that takes
 // { email, password } and returns a sentence to show, or null when it worked
 // and the page is already on its way somewhere else. `notice` is a sentence
 // that is already showing when the page opens.
@@ -38,6 +38,8 @@ export default function AuthForm({
   minLength,
   autoComplete,
   notice = null,
+  showEmail = true,
+  showPassword = true,
   onSubmit,
 }) {
   const [email, setEmail] = useState("");
@@ -58,23 +60,28 @@ export default function AuthForm({
   // same Khmer and English sentence as every other failure.
   return (
     <form onSubmit={handleSubmit} noValidate style={styles.form}>
-      <AuthField
-        id="email"
-        type="email"
-        label="EMAIL · អ៊ីមែល"
-        autoComplete="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <AuthField
-        id="password"
-        type="password"
-        label={passwordLabel}
-        autoComplete={autoComplete}
-        minLength={minLength}
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      {showEmail ? (
+        <AuthField
+          id="email"
+          type="email"
+          label="EMAIL · អ៊ីមែល"
+          autoComplete="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      ) : null}
+
+      {showPassword ? (
+        <AuthField
+          id="password"
+          type="password"
+          label={passwordLabel}
+          autoComplete={autoComplete}
+          minLength={minLength}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      ) : null}
 
       <button
         type="submit"
