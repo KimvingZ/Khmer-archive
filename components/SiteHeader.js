@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { createClient } from "../lib/supabase/server.js";
+import { isReviewer } from "../lib/review.js";
 import LogoutButton from "./LogoutButton.js";
 
 const MONO = "'Courier New', monospace";
@@ -34,6 +35,8 @@ export default async function SiteHeader() {
   // controls.
   const { data } = await supabase.auth.getUser();
   const user = data.user;
+  // Only the reviewer gets a link to the queue. The queue checks again.
+  const reviewer = user ? await isReviewer(supabase, user.id) : false;
 
   return (
     <header style={styles.bar}>
@@ -51,6 +54,11 @@ export default async function SiteHeader() {
               <Link href="/my-games" style={styles.link}>
                 My games
               </Link>
+              {reviewer ? (
+                <Link href="/review" style={styles.link}>
+                  Review queue
+                </Link>
+              ) : null}
               <span style={styles.email}>{user.email}</span>
               <LogoutButton />
             </>
