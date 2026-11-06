@@ -48,6 +48,9 @@ export default async function SiteHeader() {
               <Link href="/contribute" style={styles.link}>
                 Add a game
               </Link>
+              <Link href="/my-games" style={styles.link}>
+                My games
+              </Link>
               <span style={styles.email}>{user.email}</span>
               <LogoutButton />
             </>
