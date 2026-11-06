@@ -20,6 +20,10 @@ export default async function ArchiveEntries() {
   const { data: entries, error } = await supabase
     .from("entries")
     .select(CARD_COLUMNS)
+    // Visitors can only read published games anyway (the database's rule).
+    // This line is for the people allowed to read more, an owner and the
+    // reviewer, so the home page is the same published archive for everyone.
+    .eq("status", "published")
     .order("created_at", { ascending: false })
     // supabase-js already retries a failed read three times (after 1s, 2s,
     // 4s), so an asleep project gives up in about 7 seconds on its own. A
