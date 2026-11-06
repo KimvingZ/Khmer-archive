@@ -5,6 +5,7 @@ import { CARD_COLUMNS } from "../../../lib/entryColumns.js";
 import EntryCard from "../../../components/EntryCard.js";
 import ArchiveNotice from "../../../components/ArchiveNotice.js";
 import OwnerActions from "../../../components/OwnerActions.js";
+import ReviewStatus from "../../../components/ReviewStatus.js";
 
 // Entry ids are uuids. Anything else can't be one, so it is a 404 without
 // asking the database.
@@ -30,7 +31,7 @@ export default async function EntryPage({ params }) {
   const [{ data: entry, error }, { data: auth }] = await Promise.all([
     supabase
       .from("entries")
-      .select(`${CARD_COLUMNS}, owner`)
+      .select(`${CARD_COLUMNS}, owner, status, reviewNote:review_note`)
       .eq("id", id)
       .abortSignal(AbortSignal.timeout(8000))
       .maybeSingle(),
@@ -43,7 +44,9 @@ export default async function EntryPage({ params }) {
 
   // owner is only compared here, on the server. It is not passed on to
   // anything that renders, so it never reaches the browser.
-  const { owner, ...shown } = entry || {};
+  // status and the reviewer's note only ever show up here for the owner and
+  // the reviewer: nobody else can open a game that isn't published.
+  const { owner, status, reviewNote, ...shown } = entry || {};
   const isOwner = Boolean(entry && auth.user && auth.user.id === owner);
 
   return (
@@ -51,6 +54,7 @@ export default async function EntryPage({ params }) {
       <Link href="/" style={styles.back}>
         ← All games
       </Link>
+      {entry ? <ReviewStatus status={status} note={reviewNote} /> : null}
       {entry ? <EntryCard {...shown} large /> : <ArchiveNotice kind="unavailable" />}
       {isOwner ? <OwnerActions id={entry.id} /> : null}
     </main>
