@@ -16,7 +16,7 @@ export default async function ContributePage() {
     <PageShell
       kicker="CONTRIBUTE"
       title="Add a game"
-      description="One game per entry, described the way it is played where you learned it, with a photo."
+      description="One game per entry, described the way it is played where you learned it, with a photo. The archive's reviewer reads it first, and visitors see it once it is published."
     >
       {data.user ? <EntryForm /> : <LoginNote action="add a game" />}
     </PageShell>

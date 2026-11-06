@@ -45,7 +45,11 @@ export default async function EditEntryPage({ params }) {
   else body = <EntryForm entry={saved} />;
 
   return (
-    <PageShell kicker="EDIT" title={entry ? `Edit ${entry.title}` : "Edit a game"}>
+    <PageShell
+      kicker="EDIT"
+      title={entry ? `Edit ${entry.title}` : "Edit a game"}
+      description="Saving sends this game to the reviewer again. Visitors won't see it until it is published."
+    >
       <Link href={`/entries/${id}`} style={styles.back}>
         ← Back to the game
       </Link>
