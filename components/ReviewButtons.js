@@ -15,7 +15,9 @@ const styles = {
 };
 
 const NEED_NOTE = "សូមសរសេរថាត្រូវកែអ្វី មិនលើស ៥០០ តួអក្សរ · Say what needs fixing, in 500 characters or fewer.";
-const NOT_SAVED = "មិនបានរក្សាទុកទេ។ សូមផ្ទុកទំព័រឡើងវិញ ហើយសាកល្បងម្ដងទៀត · That wasn't saved. Reload the page and try again.";
+// The usual reason is a game already decided in another tab, so there is
+// nothing to try again: reloading shows the queue as it is now.
+const NOT_CHANGED = "ល្បែងនេះមិនបានផ្លាស់ប្ដូរទេ។ វាប្រហែលជាត្រូវបានផ្សាយ ឬបញ្ជូនត្រឡប់រួចហើយ នៅផ្ទាំងផ្សេង។ សូមផ្ទុកទំព័រឡើងវិញ · This game wasn't changed. It was probably published or returned already, in another tab. Reload the page to see the queue.";
 
 // Publish or Return for one game in the review queue. Return needs a note,
 // which the contributor reads on their game's page. As with Delete, an update
@@ -41,7 +43,7 @@ export default function ReviewButtons({ id }) {
     if (error || !data?.length) {
       console.error("review failed:", error || "no row came back");
       setBusy(false);
-      return setMessage(NOT_SAVED);
+      return setMessage(NOT_CHANGED);
     }
     router.refresh(); // the game leaves the queue; stays busy until it does
   }
