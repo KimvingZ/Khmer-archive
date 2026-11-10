@@ -6,6 +6,7 @@ import PageShell from "../../../../components/PageShell.js";
 import EntryForm from "../../../../components/EntryForm.js";
 import LoginNote from "../../../../components/LoginNote.js";
 import ArchiveNotice from "../../../../components/ArchiveNotice.js";
+import ReviewStatus from "../../../../components/ReviewStatus.js";
 
 export const metadata = { title: `Edit a game — ${collection.name}` };
 
@@ -13,7 +14,7 @@ export const metadata = { title: `Edit a game — ${collection.name}` };
 // straight into it.
 const COLUMNS =
   "id, owner, title, khmer_title, description, how_to_play, players, materials, " +
-  "occasion, place, contributor, source, photo_url, youtube_url";
+  "occasion, place, contributor, source, photo_url, youtube_url, status, review_note";
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -36,13 +37,22 @@ export default async function EditEntryPage({ params }) {
   if (error) console.error("entry query failed:", error.message);
   else if (!entry) notFound();
 
-  // owner stays here: the form gets every saved value except that one.
-  const { owner, ...saved } = entry || {};
+  // owner, status and the reviewer's note stay here: the form gets every
+  // other saved value.
+  const { owner, status, review_note: reviewNote, ...saved } = entry || {};
   let body;
   if (!entry) body = <ArchiveNotice kind="unavailable" />;
   else if (!auth.user) body = <LoginNote action="edit this game" />;
   else if (auth.user.id !== owner) body = <p style={styles.note}>មានតែអ្នកដែលបានបន្ថែមល្បែងនេះប៉ុណ្ណោះ ដែលអាចកែប្រែវាបាន · Only the person who added this game can edit it.</p>;
-  else body = <EntryForm entry={saved} />;
+  else {
+    // A returned game shows the reviewer's note here too, where it gets fixed.
+    body = (
+      <>
+        <ReviewStatus status={status} note={reviewNote} />
+        <EntryForm entry={saved} />
+      </>
+    );
+  }
 
   return (
     <PageShell
