@@ -20,9 +20,10 @@ const NEED_NOTE = "សូមសរសេរថាត្រូវកែអ្វ�
 const NOT_CHANGED = "ល្បែងនេះមិនបានផ្លាស់ប្ដូរទេ។ វាប្រហែលជាត្រូវបានផ្សាយ ឬបញ្ជូនត្រឡប់រួចហើយ នៅផ្ទាំងផ្សេង។ សូមផ្ទុកទំព័រឡើងវិញ · This game wasn't changed. It was probably published or returned already, in another tab. Reload the page to see the queue.";
 
 // Publish or Return for one game in the review queue. Return needs a note,
-// which the contributor reads on their game's page. As with Delete, an update
-// the database refuses changes nothing and still "succeeds", so a row coming
-// back is the only proof it worked.
+// which the contributor reads on their game's page. Both go through the
+// database function review_entry (docs/sprint3-sql/3-review-fixes.sql). It
+// changes a game only for a reviewer, and only while the game is still
+// waiting, and answers true when it did. false or an error changed nothing.
 export default function ReviewButtons({ id }) {
   const router = useRouter();
   const [returning, setReturning] = useState(false);
@@ -30,18 +31,14 @@ export default function ReviewButtons({ id }) {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState(null);
 
-  async function decide(status, reviewNote) {
+  async function decide(decision, reviewNote) {
     setBusy(true);
     setMessage(null);
     const { data, error } = await createClient()
-      .from("entries")
-      .update({ status, review_note: reviewNote })
-      .eq("id", id)
-      .eq("status", "pending") // only a game that is still waiting
-      .select("id")
+      .rpc("review_entry", { entry_id: id, decision, note: reviewNote })
       .abortSignal(AbortSignal.timeout(15000));
-    if (error || !data?.length) {
-      console.error("review failed:", error || "no row came back");
+    if (error || data !== true) {
+      console.error("review failed:", error || "review_entry answered false");
       setBusy(false);
       return setMessage(NOT_CHANGED);
     }
