@@ -17,10 +17,10 @@ export default async function ForgotPasswordPage({ searchParams }) {
   return (
     <AuthPage
       title="Forgot password"
-      description="Enter your account's email and we'll send you a link to set a new password."
-      altText="Remembered it?"
+      description="សូមបញ្ចូលអ៊ីមែលនៃគណនីរបស់អ្នក ដើម្បីទទួលតំណសម្រាប់កំណត់ពាក្យសម្ងាត់ថ្មី · Enter the email address of your account to receive a link for setting a new password."
+      altText="Remembered your password? · នឹកឃើញពាក្យសម្ងាត់វិញហើយ?"
       altHref="/login"
-      altLabel="Log in"
+      altLabel="Log in · ចូលគណនី"
     >
       <ForgotForm notice={NOTICES.get(link)} />
     </AuthPage>

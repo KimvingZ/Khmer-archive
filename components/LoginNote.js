@@ -26,18 +26,18 @@ export default function LoginNote({ action }) {
   return (
     <div style={styles.box}>
       <p lang="km" style={styles.khmer}>
-        សូមចូលគណនីជាមុនសិន។
+        សូមចូលគណនី ឬចុះឈ្មោះជាមុនសិន។
       </p>
       <p style={styles.english}>
-        You need an account to {action}.{" "}
+        You need an account to {action}. Please{" "}
         <Link href="/login" style={styles.link}>
-          Log in
+          log in
         </Link>{" "}
         or{" "}
         <Link href="/signup" style={styles.link}>
           sign up
         </Link>
-        . It takes a minute.
+        .
       </p>
     </div>
   );

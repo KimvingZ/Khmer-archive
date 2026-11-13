@@ -32,14 +32,14 @@ export default function ForgotForm({ notice }) {
       <DoneNote
         title="សូមពិនិត្យអ៊ីមែល · Check your email"
         khmer="បើអ៊ីមែលនេះមានគណនី យើងបានផ្ញើតំណសម្រាប់ដាក់ពាក្យសម្ងាត់ថ្មីទៅហើយ។ សូមបើកតំណនោះក្នុង browser ដដែលនេះ ក្នុងរយៈពេល ១ ម៉ោង។ បើរកមិនឃើញ សូមមើលក្នុង Spam។"
-        english="If that address has an account, we sent it a link to set a new password. Open the link in this same browser within 1 hour. Can't find it? Look in Spam."
+        english="If that address has an account, a link to set a new password has been sent to it. Open the link in this same browser within 1 hour. If you cannot find it, please check your Spam folder."
       />
     );
   }
 
   return (
     <AuthForm
-      submitLabel="Send reset link"
+      submitLabel="Send reset link · ផ្ញើតំណ"
       showPassword={false}
       notice={notice}
       onSubmit={sendLink}

@@ -8,10 +8,10 @@ export default function SignupPage() {
   return (
     <AuthPage
       title="Sign up"
-      description="This archive only holds games somebody has actually sat down and described. An account is where your name goes when that somebody is you."
-      altText="Already have an account?"
+      description="សូមបង្កើតគណនី ដើម្បីបន្ថែមល្បែងទៅក្នុងបណ្ណសារ។ ល្បែងនីមួយៗដែលអ្នកបន្ថែមត្រូវបានភ្ជាប់ជាមួយគណនីរបស់អ្នក ហើយមានតែអ្នកប៉ុណ្ណោះដែលអាចកែប្រែ ឬលុបវាបាន · Create an account to add games to the archive. Every game you add is linked to your account, and only you can edit or delete it."
+      altText="Already have an account? · មានគណនីរួចហើយ?"
       altHref="/login"
-      altLabel="Log in"
+      altLabel="Log in · ចូលគណនី"
     >
       <SignupForm />
     </AuthPage>

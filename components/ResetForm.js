@@ -46,7 +46,7 @@ export default function ResetForm() {
         english="You're logged in. Use your new password next time."
       >
         <Link href="/" style={styles.back}>
-          ← All games
+          ← All games · ល្បែងទាំងអស់
         </Link>
       </DoneNote>
     );
@@ -54,7 +54,7 @@ export default function ResetForm() {
 
   return (
     <AuthForm
-      submitLabel="Save new password"
+      submitLabel="Save new password · រក្សាទុកពាក្យសម្ងាត់ថ្មី"
       showEmail={false}
       passwordLabel="NEW PASSWORD · ពាក្យសម្ងាត់ថ្មី · 6+ CHARACTERS"
       minLength={6}

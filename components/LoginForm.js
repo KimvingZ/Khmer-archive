@@ -43,7 +43,7 @@ export default function LoginForm({ notice }) {
 
   return (
     <AuthForm
-      submitLabel="Log in"
+      submitLabel="Log in · ចូលគណនី"
       autoComplete="current-password"
       notice={notice}
       onSubmit={logIn}

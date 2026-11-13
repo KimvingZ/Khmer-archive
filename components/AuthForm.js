@@ -88,7 +88,7 @@ export default function AuthForm({
         disabled={busy}
         style={{ ...styles.button, ...(busy ? styles.busy : null) }}
       >
-        {busy ? "one moment…" : submitLabel}
+        {busy ? "Please wait… · សូមរង់ចាំ…" : submitLabel}
       </button>
 
       {message ? (

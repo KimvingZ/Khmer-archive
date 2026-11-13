@@ -57,14 +57,14 @@ export default function SignupForm() {
       <DoneNote
         title="សូមពិនិត្យអ៊ីមែល · Check your email"
         khmer={`យើងបានផ្ញើតំណបញ្ជាក់ទៅ ${sentTo}។ សូមបើកតំណនោះ ដើម្បីបញ្ចប់ការបង្កើតគណនី។ បើរកមិនឃើញ សូមមើលក្នុង Spam។ បើអ្នកមានគណនីនេះរួចហើយ នឹងគ្មានអ៊ីមែលផ្ញើមកទេ សូមចូលគណនីតែម្ដង។`}
-        english={`We sent a confirmation link to ${sentTo}. Open it to finish creating your account. Can't find it? Look in Spam. If you already have an account here, no email is sent: just log in.`}
+        english={`We sent a confirmation link to ${sentTo}. Open it to finish creating your account. If you cannot find it, please check your Spam folder. If you already have an account here, no email is sent; please log in instead.`}
       />
     );
   }
 
   return (
     <AuthForm
-      submitLabel="Create account"
+      submitLabel="Create account · បង្កើតគណនី"
       passwordLabel="PASSWORD · ពាក្យសម្ងាត់ · 6+ CHARACTERS"
       minLength={6}
       autoComplete="new-password"

@@ -28,7 +28,7 @@ export default function AuthPage({
 }) {
   return (
     <main style={styles.wrap}>
-      <p style={styles.kicker}>CONTRIBUTOR ACCOUNTS</p>
+      <p style={styles.kicker}>CONTRIBUTOR ACCOUNTS · គណនីអ្នករួមចំណែក</p>
       <h1 style={styles.title}>{title}</h1>
       <p style={styles.description}>{description}</p>
 

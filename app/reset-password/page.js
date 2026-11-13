@@ -16,10 +16,10 @@ export default async function ResetPasswordPage() {
   return (
     <AuthPage
       title="New password"
-      description="Choose the password you'll log in with from now on."
-      altText="Changed your mind?"
+      description="សូមជ្រើសរើសពាក្យសម្ងាត់ថ្មីសម្រាប់គណនីរបស់អ្នក · Choose a new password for your account."
+      altText="Keep your current password? · រក្សាពាក្យសម្ងាត់ដដែល?"
       altHref="/"
-      altLabel="Back to the games"
+      altLabel="Back to the games · ត្រឡប់ទៅល្បែងវិញ"
     >
       <ResetForm />
     </AuthPage>
