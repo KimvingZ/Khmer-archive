@@ -68,7 +68,7 @@ export default async function MyGamesPage() {
   }
 
   return (
-    <PageShell kicker="MY GAMES" title="My games" description="The games you added, and whether each one is published yet.">
+    <PageShell kicker="MY GAMES" title="My games" description="ល្បែងដែលអ្នកបានបន្ថែម និងស្ថានភាពនៃការពិនិត្យរបស់ល្បែងនីមួយៗ · The games you have added and the review status of each.">
       {body}
     </PageShell>
   );

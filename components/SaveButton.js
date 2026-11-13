@@ -30,7 +30,7 @@ export default function SaveButton({ saving, label, message }) {
         disabled={saving}
         style={{ ...styles.button, ...(saving ? styles.busy : null) }}
       >
-        {saving ? "Saving…" : label}
+        {saving ? "Saving… · កំពុងរក្សាទុក" : label}
       </button>
       {message ? (
         <p role="alert" style={styles.message}>

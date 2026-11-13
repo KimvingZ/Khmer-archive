@@ -52,7 +52,7 @@ export default async function EntryPage({ params }) {
   return (
     <main style={styles.wrap}>
       <Link href="/" style={styles.back}>
-        ← All games
+        ← All games · ល្បែងទាំងអស់
       </Link>
       {entry ? <ReviewStatus status={status} note={reviewNote} /> : null}
       {entry ? <EntryCard {...shown} large /> : <ArchiveNotice kind="unavailable" />}

@@ -58,10 +58,10 @@ export default async function EditEntryPage({ params }) {
     <PageShell
       kicker="EDIT"
       title={entry ? `Edit ${entry.title}` : "Edit a game"}
-      description="Saving sends this game to the reviewer again. Visitors won't see it until it is published."
+      description="ការរក្សាទុកនឹងបញ្ជូនល្បែងនេះទៅអ្នកពិនិត្យម្ដងទៀត។ អ្នកទស្សនានឹងមិនឃើញវាទេ រហូតដល់វាត្រូវបានផ្សាយ · Saving sends this game to the reviewer again. Visitors will not see it until it is published."
     >
       <Link href={`/entries/${id}`} style={styles.back}>
-        ← Back to the game
+        ← Back to the game · ត្រឡប់ទៅល្បែងវិញ
       </Link>
       {body}
     </PageShell>

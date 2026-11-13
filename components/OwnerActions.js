@@ -14,7 +14,7 @@ const styles = {
     border: "1px dashed #2E3644",
     borderRadius: 10,
   },
-  label: { fontFamily: MONO, fontSize: 11, letterSpacing: 1, color: "#97A1B3" },
+  label: { fontFamily: MONO, fontSize: 12, letterSpacing: 1, color: "#97A1B3" },
   edit: {
     fontFamily: MONO,
     fontSize: 13,
@@ -32,9 +32,9 @@ const styles = {
 export default function OwnerActions({ id }) {
   return (
     <div style={styles.bar}>
-      <span style={styles.label}>YOU ADDED THIS GAME</span>
+      <span style={styles.label}>YOU ADDED THIS GAME · អ្នកបានបន្ថែមល្បែងនេះ</span>
       <Link href={`/entries/${id}/edit`} style={styles.edit}>
-        Edit
+        Edit · កែប្រែ
       </Link>
       <DeleteEntryButton id={id} />
     </div>

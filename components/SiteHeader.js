@@ -49,14 +49,14 @@ export default async function SiteHeader() {
           {user ? (
             <>
               <Link href="/contribute" style={styles.link}>
-                Add a game
+                Add a game · បន្ថែមល្បែង
               </Link>
               <Link href="/my-games" style={styles.link}>
-                My games
+                My games · ល្បែងរបស់ខ្ញុំ
               </Link>
               {reviewer ? (
                 <Link href="/review" style={styles.link}>
-                  Review queue
+                  Review queue · បញ្ជីរង់ចាំពិនិត្យ
                 </Link>
               ) : null}
               <span style={styles.email}>{user.email}</span>
@@ -65,10 +65,10 @@ export default async function SiteHeader() {
           ) : (
             <>
               <Link href="/login" style={styles.link}>
-                Log in
+                Log in · ចូលគណនី
               </Link>
               <Link href="/signup" style={styles.link}>
-                Sign up
+                Sign up · ចុះឈ្មោះ
               </Link>
             </>
           )}

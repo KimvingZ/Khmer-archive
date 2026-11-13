@@ -18,7 +18,7 @@ export default function NotFound() {
       description="រកមិនឃើញទំព័រនេះទេ។ ល្បែងនេះអាចត្រូវបានលុប ឬអាសយដ្ឋានមិនត្រឹមត្រូវ · This page isn't here. The game may have been deleted, or the address may be wrong."
     >
       <Link href="/" style={styles.back}>
-        ← All games
+        ← All games · ល្បែងទាំងអស់
       </Link>
     </PageShell>
   );

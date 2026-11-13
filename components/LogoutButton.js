@@ -31,7 +31,7 @@ export default function LogoutButton() {
 
   return (
     <button type="button" onClick={logOut} style={styles.button}>
-      Log out
+      Log out · ចាកចេញ
     </button>
   );
 }

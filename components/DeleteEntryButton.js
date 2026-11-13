@@ -58,7 +58,7 @@ export default function DeleteEntryButton({ id }) {
     return (
       <span style={styles.row}>
         <button type="button" onClick={() => setStage("confirm")} style={styles.button}>
-          Delete
+          Delete · លុប
         </button>
         {message ? <span role="alert" style={styles.message}>{message}</span> : null}
       </span>
@@ -68,12 +68,12 @@ export default function DeleteEntryButton({ id }) {
   const busy = stage === "deleting";
   return (
     <span style={styles.row}>
-      <span style={styles.ask}>Delete this game for good?</span>
+      <span style={styles.ask}>Delete this game permanently? · លុបល្បែងនេះជាអចិន្ត្រៃយ៍?</span>
       <button type="button" onClick={remove} disabled={busy} style={{ ...styles.button, ...styles.danger }}>
-        {busy ? "Deleting…" : "Yes, delete it"}
+        {busy ? "Deleting… · កំពុងលុប" : "Delete permanently · លុបជាអចិន្ត្រៃយ៍"}
       </button>
       <button type="button" onClick={() => setStage("idle")} disabled={busy} style={styles.button}>
-        Cancel
+        Cancel · បោះបង់
       </button>
     </span>
   );

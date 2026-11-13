@@ -72,7 +72,7 @@ export default function EntryForm({ entry = null }) {
       />
       <SaveButton
         saving={saving}
-        label={entry ? "Save changes" : "Add this game"}
+        label={entry ? "Save changes · រក្សាទុកការកែប្រែ" : "Add this game · បន្ថែមល្បែងនេះ"}
         message={message}
       />
     </form>
