@@ -78,8 +78,8 @@ export default function ArchiveSearch({ entries }) {
 
       <p style={styles.count} aria-live="polite">
         {needle
-          ? `${visible.length} of ${entries.length} games match "${query.trim()}"`
-          : `showing all ${entries.length} games`}
+          ? `${visible.length} of ${entries.length} games match "${query.trim()}" · ល្បែង ${visible.length} ក្នុងចំណោម ${entries.length} ត្រូវនឹង «${query.trim()}»`
+          : `Showing all ${entries.length} games · កំពុងបង្ហាញល្បែងទាំង ${entries.length}`}
       </p>
 
       {visible.length > 0 ? (

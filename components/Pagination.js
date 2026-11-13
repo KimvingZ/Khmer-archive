@@ -41,7 +41,7 @@ export default function Pagination({ page, pageCount, onChange }) {
           onClick={() => onChange(page - 1)}
           disabled={page === 1}
         >
-          ‹ prev
+          ‹ Previous · មុន
         </button>
 
         {pages.map((n) => (
@@ -65,12 +65,12 @@ export default function Pagination({ page, pageCount, onChange }) {
           onClick={() => onChange(page + 1)}
           disabled={page === pageCount}
         >
-          next ›
+          Next · បន្ទាប់ ›
         </button>
       </nav>
 
       <p style={styles.status}>
-        page {page} of {pageCount}
+        Page {page} of {pageCount} · ទំព័រ {page} នៃ {pageCount}
       </p>
     </>
   );

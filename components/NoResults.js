@@ -24,13 +24,13 @@ export default function NoResults({ query }) {
   return (
     <div style={styles.box}>
       <p lang="km" style={styles.khmer}>
-        រកមិនឃើញល្បែងឈ្មោះនេះទេ។ បណ្ណសារនេះមានតែល្បែងដែលមានអ្នកនិយាយប្រាប់ប៉ុណ្ណោះ។
-        បើអ្នកស្គាល់ល្បែងនេះ សូមមកប្រាប់យើង។
+        រកមិនឃើញល្បែងដែលត្រូវនឹងពាក្យនេះទេ។ បណ្ណសារនេះមានតែល្បែងដែលមាននរណាម្នាក់បានរៀបរាប់ប៉ុណ្ណោះ។
+        បើអ្នកស្គាល់ល្បែងនេះ សូមបន្ថែមវាទៅក្នុងបណ្ណសារ។
       </p>
       <p style={styles.english}>
-        No game called <span style={styles.query}>{query}</span> in here — not
-        yet. This archive only holds games somebody has actually sat down and
-        described. If you know this one, you are the missing entry.
+        No game matches <span style={styles.query}>{query}</span>. This archive
+        holds only games that someone has described. If you know this game,
+        please consider adding it.
       </p>
     </div>
   );

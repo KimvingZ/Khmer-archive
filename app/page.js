@@ -3,6 +3,9 @@ import collection from "../collection.config.js";
 import ArchiveEntries from "../components/ArchiveEntries.js";
 import ArchiveNotice from "../components/ArchiveNotice.js";
 
+const KHMER_STACK =
+  "'Noto Sans Khmer', 'Khmer OS Battambang', 'Khmer OS', 'Leelawadee UI', 'Nokora', sans-serif";
+
 const styles = {
   wrap: {
     maxWidth: 720,
@@ -20,6 +23,20 @@ const styles = {
     fontWeight: 700,
     margin: "16px 0 12px",
     lineHeight: 1.1,
+  },
+  khmerName: {
+    fontFamily: KHMER_STACK,
+    fontSize: 28,
+    lineHeight: 1.6,
+    color: "#2EE6A8",
+    margin: "0 0 16px",
+  },
+  khmerDescription: {
+    fontFamily: KHMER_STACK,
+    fontSize: 18,
+    lineHeight: 1.9,
+    color: "#C7CEDA",
+    margin: "0 0 12px",
   },
   description: {
     fontSize: 18,
@@ -58,14 +75,16 @@ export default function Home() {
     <main style={styles.wrap}>
       <p style={styles.kicker}>KHMER LIVING ARCHIVE</p>
       <h1 style={styles.title}>{collection.name}</h1>
+      <p lang="km" style={styles.khmerName}>{collection.khmerName}</p>
+      <p lang="km" style={styles.khmerDescription}>{collection.khmerDescription}</p>
       <p style={styles.description}>{collection.description}</p>
 
       <div style={styles.card}>
-        <p style={styles.cardLabel}>CURATED BY</p>
+        <p style={styles.cardLabel}>CURATED BY · រៀបចំដោយ</p>
         <p style={styles.cardValue}>{collection.curator}</p>
       </div>
       <div style={styles.card}>
-        <p style={styles.cardLabel}>SOURCE</p>
+        <p style={styles.cardLabel}>SOURCE · ប្រភព</p>
         <p style={styles.cardValue}>{collection.source}</p>
       </div>
 
@@ -77,6 +96,7 @@ export default function Home() {
       </Suspense>
 
       <footer style={styles.footer}>
+        <span lang="km">បង្កើតក្នុងមុខវិជ្ជា ICT 340 នៅសាកលវិទ្យាល័យអាមេរិកាំងភ្នំពេញ ឆ្នាំ ២០២៦</span> ·
         Built in ICT 340 — Vibe Coding, American University of Phnom Penh, Fall
         2026.
       </footer>
