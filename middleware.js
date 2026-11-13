@@ -9,9 +9,10 @@ import { NextResponse } from "next/server";
 // showing "logged out" to somebody who is not. Middleware runs before the
 // page and it *can* write cookies, so the refresh happens here.
 //
-// This middleware only refreshes the session. It guards nothing: no part of
-// the archive is private yet. Route protection is next week's lab, and it
-// belongs here when it comes.
+// This middleware only refreshes the session. It guards nothing, on purpose:
+// the database decides who can read or change a game (row-level security,
+// and review_entry for publishing), so a request that skips the pages is
+// refused all the same. The pages only check so they can show the right thing.
 export async function middleware(request) {
   let response = NextResponse.next({ request });
 
