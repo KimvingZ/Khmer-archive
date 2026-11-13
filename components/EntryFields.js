@@ -26,7 +26,7 @@ export default function EntryFields({ values, errors, onChange, onPhoto, current
       <FormField
         name="youtube_url"
         label="YOUTUBE LINK · វីដេអូ"
-        hint="Optional: a video of this game being played"
+        hint="មិនចាំបាច់៖ វីដេអូនៃការលេងល្បែងនេះ · Optional: a video of this game being played"
         value={values.youtube_url}
         error={errors.youtube_url}
         onChange={onChange}

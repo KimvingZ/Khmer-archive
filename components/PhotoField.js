@@ -20,9 +20,9 @@ const styles = {
 };
 
 const HINTS = {
-  required: "A photo of the game: JPG, PNG or WebP, up to 5 MB.",
-  keep: "Keep this photo, or choose a new one: JPG, PNG or WebP, up to 5 MB.",
-  add: "No photo yet. Add one if you have it: JPG, PNG or WebP, up to 5 MB.",
+  required: "រូបថតនៃល្បែង៖ JPG, PNG ឬ WebP មិនលើស 5 MB · A photo of the game: JPG, PNG or WebP, up to 5 MB.",
+  keep: "រក្សារូបថតនេះ ឬជ្រើសរើសរូបថ្មី៖ JPG, PNG ឬ WebP មិនលើស 5 MB · Keep this photo, or choose a new one: JPG, PNG or WebP, up to 5 MB.",
+  add: "មិនទាន់មានរូបថតទេ។ សូមបន្ថែមមួយ ប្រសិនបើអ្នកមាន៖ JPG, PNG ឬ WebP មិនលើស 5 MB · No photo yet. Add one if you have it: JPG, PNG or WebP, up to 5 MB.",
 };
 
 // The photo picker. It shows the chosen photo before anything is uploaded,
