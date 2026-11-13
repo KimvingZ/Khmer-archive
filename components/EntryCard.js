@@ -33,7 +33,7 @@ const styles = {
   },
   label: {
     fontFamily: "'Courier New', monospace",
-    fontSize: 11,
+    fontSize: 12,
     letterSpacing: 1,
     color: "#97A1B3",
     margin: "0 0 6px",
@@ -94,7 +94,7 @@ export default function EntryCard({
 
       {howToPlay ? (
         <>
-          <p style={styles.label}>HOW IT IS PLAYED</p>
+          <p style={styles.label}>HOW IT IS PLAYED · របៀបលេង</p>
           <p style={styles.howToPlay}>
             <Highlight text={howToPlay} query={query} />
           </p>

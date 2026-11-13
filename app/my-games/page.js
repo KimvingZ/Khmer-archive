@@ -48,7 +48,8 @@ export default async function MyGamesPage() {
     else if (entries.length === 0) {
       body = (
         <p style={styles.none}>
-          You haven't added a game yet. <Link href="/contribute" style={styles.link}>Add one</Link>.
+          <span lang="km">អ្នកមិនទាន់បានបន្ថែមល្បែងណាមួយនៅឡើយទេ</span> · You haven't added a game yet.{" "}
+          <Link href="/contribute" style={styles.link}>Add one</Link>.
         </p>
       );
     } else {

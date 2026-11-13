@@ -30,7 +30,7 @@ export default async function ReviewPage() {
   } else body = await waitingGames(supabase);
 
   return (
-    <PageShell kicker="REVIEW" title="Review queue" description="Games contributors have added or changed. Publish one to put it in the archive, or return it with a note saying what to fix.">
+    <PageShell kicker="REVIEW" title="Review queue" description="ល្បែងដែលអ្នករួមចំណែកបានបន្ថែម ឬកែប្រែ។ ផ្សាយល្បែងមួយ ដើម្បីដាក់វាក្នុងបណ្ណសារ ឬបញ្ជូនវាត្រឡប់ ជាមួយកំណត់សម្គាល់ថាត្រូវកែអ្វី · Games contributors have added or changed. Publish one to put it in the archive, or return it with a note saying what to fix.">
       {body}
     </PageShell>
   );

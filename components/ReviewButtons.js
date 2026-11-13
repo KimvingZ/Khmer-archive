@@ -58,14 +58,14 @@ export default function ReviewButtons({ id }) {
           <textarea value={note} onChange={(e) => setNote(e.target.value)} rows={3} aria-label="Note to the contributor"
             placeholder="What should the contributor fix? · តើត្រូវកែអ្វី?" style={styles.note} />
           <button type="button" onClick={sendBack} disabled={busy} style={styles.yes}>
-            {busy ? "Sending…" : "Send back · បញ្ជូនត្រឡប់"}
+            {busy ? "Sending… · កំពុងបញ្ជូន" : "Send back · បញ្ជូនត្រឡប់"}
           </button>
-          <button type="button" onClick={() => setReturning(false)} disabled={busy} style={styles.plain}>Cancel</button>
+          <button type="button" onClick={() => setReturning(false)} disabled={busy} style={styles.plain}>Cancel · បោះបង់</button>
         </>
       ) : (
         <>
           <button type="button" onClick={() => decide("published", null)} disabled={busy} style={styles.yes}>
-            {busy ? "Publishing…" : "Publish · ផ្សាយ"}
+            {busy ? "Publishing… · កំពុងផ្សាយ" : "Publish · ផ្សាយ"}
           </button>
           <button type="button" onClick={() => setReturning(true)} disabled={busy} style={styles.plain}>Return · បញ្ជូនត្រឡប់</button>
         </>
