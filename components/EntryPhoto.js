@@ -42,7 +42,7 @@ export default function EntryPhoto({ url, title, large }) {
   if (!large) return null;
   return (
     <p style={styles.missing}>
-      <span lang="km">មិនទាន់មានរូបថតនៅឡើយទេ</span> · No photo of this game yet
+      <span lang="km">មិនទាន់មានរូបថតនៃល្បែងនេះនៅឡើយទេ</span> · No photo of this game yet
     </p>
   );
 }

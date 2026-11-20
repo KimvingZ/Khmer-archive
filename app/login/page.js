@@ -14,7 +14,7 @@ const styles = {
 // value comes from the address bar, and a plain object would answer
 // ?link=constructor with something that isn't a sentence.
 const NOTICES = new Map([
-  ["confirmed", "បានបញ្ជាក់អ៊ីមែលរបស់អ្នកហើយ។ សូមចូលគណនី · Your email is confirmed. Log in to start adding games."],
+  ["confirmed", "បានបញ្ជាក់អ៊ីមែលរបស់អ្នកហើយ។ សូមចូលគណនី ដើម្បីចាប់ផ្ដើមបន្ថែមល្បែង · Your email is confirmed. Log in to start adding games."],
   ["expired", "តំណនេះផុតកំណត់ ឬបានប្រើរួចហើយ។ សូមសាកល្បងចូលគណនី។ បើនៅតែមិនបាន សូមបង្កើតគណនីម្ដងទៀតដោយប្រើអ៊ីមែលដដែល ដើម្បីទទួលតំណថ្មី · That link has expired or was already used. Try logging in. If that doesn't work, sign up again with the same email to get a new link."],
 ]);
 
