@@ -96,13 +96,14 @@ All of the AI assistance on this project came from Claude Code, Anthropic's codi
 | Lab 2 (25 August) | Claude Sonnet 5 | The first `EntryCard` component |
 | Lab 3, Sprint 1 (6 September) | Claude Opus 5 | Real entries, browse, search and the empty state |
 | Lab 4 (12 September) | not recorded | Pagination and search highlighting |
-| Lab 5 to the final (19 September to 13 November) | Claude Opus 5.5 | Accounts, the database, photos and ownership, the review step, the fixes after each checklist, the final polish and the first draft of this README |
+| Lab 5 to the final (19 September to 19 November) | Claude Opus 5.5 | Accounts, the database, photos and ownership, the review step, the fixes after each checklist, the final polish, the first draft of this README and a second check of every source |
 
 **What the model wrote, and what I kept.** The model drafted nearly all of the code and SQL. I kept what passed my checks, and I made the decisions about what to build, what to leave out and what each page should say. It also drafted the Khmer interface text, which I review as the Khmer reader on this project.
 
 **Where it was wrong, and what I changed.**
 
 - The game descriptions it wrote in Lab 3 contradicted published sources, for example the rules of Bay Khom. In October I corrected all eight entries to match the sources they now cite.
+- One of the sources it cited in October, a Cambodia Daily article for Teanh Prot, could not be found anywhere when I had every source checked again on 19 November. I replaced it with a Cambodge Mag article that supports the entry's text.
 - The storage SQL from the lab had no select policy, so a deleted photo stayed online while Supabase reported success. I found it by opening the photo's address after deleting it, and fixed it with one policy.
 - Its first console attack in Sprint 3 was sent to my Vercel site instead of Supabase. The 404 replies only looked like refusals, so I repeated the tests against Supabase.
 - Its first review step gave reviewers an update policy on the whole table. I replaced it with `review_entry` on 10 November.
@@ -124,7 +125,7 @@ This README was drafted with Claude Code (Claude Opus 5.5) from the repository a
 - **Chol Chhoung:** VOD English, "Traditional Games Delight Ahead of Khmer New Year", Keat Soriththeavy, 8 April 2022; UMass Lowell Southeast Asian Digital Archive, photograph by George Chigas, 1989; Wikipedia, "Cambodian New Year".
 - **Bos Angkunh:** VOD English, "Traditional Games Delight Ahead of Khmer New Year", Keat Soriththeavy, 8 April 2022; Wikipedia, "Cambodian New Year"; IntoCambodia.org, "Bos Angkunh".
 - **Leak Kanseng:** VOD English, "Traditional Games Delight Ahead of Khmer New Year", Keat Soriththeavy, 8 April 2022; Wikipedia, "Cambodian New Year".
-- **Teanh Prot:** UNESCO, "Tugging rituals and games", Representative List, 2015; The Cambodia Daily, "Tug-of-War Game Pulls Its Way Onto UN Cultural Heritage List", Ben Sokhean, 7 December 2015; Wikipedia, "Tugging rituals and games".
+- **Teanh Prot:** UNESCO, "Tugging rituals and games", Representative List, 2015; Wikipedia, "Tugging rituals and games"; Cambodge Mag, "Culture & Tradition: Teanh Proat, the Rope that Unites Gods, Demons, and Cambodia's Future", 3 December 2025.
 - **Bay Khom:** Wikipedia, "Cambodian New Year"; IntoCambodia.org, "Bai Khom game".
 - **Klah Klok:** Wikipedia, "Hoo Hey How" (its Cambodian variant, Klah Klok) and "Cambodian New Year".
 - **Chab Kon Kleng:** Wikipedia, "Cambodian New Year".
@@ -164,22 +165,3 @@ npm start        # serve the production build
 ```
 
 A new Supabase project also needs the tables, policies, bucket and function described in section 3.
-
-## 8. Submission checklist
-
-- Live URL loads logged out and shows published entries only: yes, https://khmer-archive.vercel.app/ (eight published games; checked 13 November 2026)
-- A stranger cannot publish their own entry through the page or the console: yes, tested 10 November 2026 (section 4)
-- Logged out, the API returns nothing pending or returned: yes, tested 13 November 2026 (a request for entries that are not published returned `[]`)
-- Contributors can edit and delete only their own entries: yes (policies in section 3; tested 10 November 2026)
-- No secrets anywhere in the repo history: yes, checked 13 November 2026 by searching every commit on every branch for keys, tokens, passwords and the project address
-- At least eight real entries, each with a credited source: yes, 8 (section 6)
-- Khmer renders on every screen a user meets, including the queue: yes
-- Works at phone width: yes, tested at 390 px in Microsoft Edge's mobile emulation (13 November 2026)
-- No test entries, lorem ipsum or TODO comments in shipped pages: yes
-- No console errors on the main pages: yes (checked 13 November 2026)
-- jesseorndorff is a collaborator on this repo: (to confirm)
-- Supabase project restored and awake on (date)
-- Demo video link opens in a private window: (link)
-- Reflection pasted in the Canvas submission: (to do)
-- Posted in the Show Your Archive discussion: (to do)
-- Q&A slot booked for (date and time)
