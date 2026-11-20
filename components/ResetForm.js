@@ -31,7 +31,7 @@ export default function ResetForm() {
       return "នេះជាពាក្យសម្ងាត់ចាស់របស់អ្នក។ សូមជ្រើសរើសពាក្យសម្ងាត់ថ្មី · That's your current password. Choose a new one.";
     }
     if (error) {
-      return "តំណនេះអស់សុពលភាពហើយ។ សូមស្នើតំណថ្មីពីទំព័រចូលគណនី · This reset has run out of time. Ask for a new link from the log in page.";
+      return "តំណនេះអស់សុពលភាពហើយ។ សូមស្នើតំណថ្មីពីទំព័រចូលគណនី · This reset has run out of time. Ask for a new link from the login page.";
     }
 
     setDone(true);

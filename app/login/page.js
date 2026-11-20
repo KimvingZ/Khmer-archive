@@ -25,7 +25,7 @@ export default async function LoginPage({ searchParams }) {
     <AuthPage
       title="Log in"
       description="សូមចូលគណនី ដើម្បីបន្ថែមល្បែង និងគ្រប់គ្រងល្បែងដែលអ្នកបានបន្ថែម · Log in to add a game and to manage the games you have added."
-      altText="Do not have an account yet? · មិនទាន់មានគណនី?"
+      altText="Don't have an account yet? · មិនទាន់មានគណនី?"
       altHref="/signup"
       altLabel="Sign up · ចុះឈ្មោះ"
     >
