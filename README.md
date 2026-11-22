@@ -1,6 +1,7 @@
 # Khmer Traditional Games · ល្បែងប្រជាប្រិយខ្មែរ
 
 **Live site:** https://khmer-archive.vercel.app/
+
 **Repository:** https://github.com/KimvingZ/Khmer-archive
 
 Built by Kimving NGO for ICT 340 (Vibe Coding), American University of Phnom Penh, Fall 2026.
@@ -16,14 +17,14 @@ The archive is for Khmer speakers in Cambodia who want to know how these games a
 - **Khmer on every screen.** Every game has its name in Khmer script. The archive's name and description, the page descriptions, links, buttons, form labels and hints, status words, messages and empty states are written in Khmer and English. Search accepts Khmer script, and the match highlight is widened to whole Khmer syllables so that a partial match never breaks the script (`components/Highlight.js`). One limitation remains: the descriptions and rules of the eight games are still in English only.
 - **Phones first.** The layout is a single column no wider than 720 px. It was tested at a 390 px screen width with no horizontal scrolling, and no text is smaller than 12 px.
 - **Slow connections.** Pages are rendered on the server. The list of games arrives with the home page, and search filters it in the browser without further requests. Photos below the first screen load only when they are needed, and uploaded photos are limited to 5 MB and re-encoded in the browser before upload.
-- **Plain messages.** Every error and empty state is a complete sentence in Khmer and English. Raw database errors are never shown to the user; they go to the browser console only.
+- **Plain messages.** Every error and empty state is a complete sentence in Khmer and English. Raw database errors are never shown to the user; they go only to the browser console or the server log.
 - **Credit.** Each game shows who taught it ("Told by") and the published sources that describe it ("Source"). The home page names the curator and the archive's sources.
 
 ## 3. How it works
 
 **Stack.** Next.js 15 (App Router) and React 19 in plain JavaScript with inline styles, deployed on Vercel, which publishes every push to `main`. Supabase provides the accounts (email and password, with email confirmation and password reset through a Gmail sender), the Postgres database and the photo storage. The only packages besides Next.js and React are `@supabase/supabase-js` and `@supabase/ssr`.
 
-**Rendering.** Pages are Server Components that query Supabase on the server with the visitor's session cookie. `middleware.js` only refreshes that session. Client components handle the forms, search, pagination and the review buttons.
+**Rendering.** Pages are Server Components that query Supabase on the server with the visitor's session cookie. `middleware.js` only refreshes that session. Client components handle the forms, search, pagination, and the review, delete and log-out buttons.
 
 **Tables.**
 
@@ -61,7 +62,7 @@ The tables, policies, function and bucket were created in the Supabase SQL Edito
 
 **Why the gate lives in the database.** The publishable key is in every visitor's browser, so anyone can skip my pages and send requests to Supabase directly from the console. Only the database sees every request. Until 10 November, reviewers had an update policy on `entries`; it allowed my reviewer account to change any column of any entry. I replaced it with `review_entry`, so a reviewer can now only publish or return a pending entry.
 
-**What a hidden button does and does not protect.** The "Review queue" link and page appear only for reviewers (`lib/review.js`). That decides what a page shows; it does not stop anyone. A stranger who sends the same request from the console is refused by the policies and by `review_entry`.
+**What a hidden button does and does not protect.** The "Review queue" link and the queue itself appear only for reviewers (`lib/review.js`). That decides what a page shows; it does not stop anyone. A stranger who sends the same request from the console is refused by the policies and by `review_entry`.
 
 **Tested on the live site** (10 November 2026, with a second, non-reviewer account in the browser console):
 
@@ -80,10 +81,10 @@ The tables, policies, function and bucket were created in the Supabase SQL Edito
 - **Taking down published entries.** Reviewers cannot. The reviewer's only power is `review_entry`, which acts on pending entries; only an entry's owner can delete it. Keeping the reviewer's powers to one narrow function was deliberate. Removing spam would need a reviewer delete policy for entries and photos, which I have not built.
 - **Edits by the reviewer.** My reviewer account owns no games and has no right to edit anyone else's, so a reviewer edit can never change or unpublish a published game. Every edit by an owner returns the game to pending.
 - **What search shows a contributor about their own pending entries.** Nothing. The home page and search list only published games for everyone, including the owner and the reviewer. A contributor finds pending and returned games on My games and on each game's own page, which shows its status.
-- **Account privacy.** The log in page gives one message for a wrong email or a wrong password, sign-up shows the same "check your email" screen for new and existing addresses, and the forgot password form answers the same way for every address. None of them reveals who has an account.
+- **Account privacy.** The login page gives one message for a wrong email or a wrong password, sign-up shows the same "check your email" screen for new and existing addresses, and the forgot password form answers the same way for every address. None of them reveals who has an account.
 - **Real email confirmation.** The lab suggested turning email confirmation off. I turned it on and connected a Gmail sender, so every account belongs to an inbox its owner controls.
 - **Photos.** The form checks the type and the size, then redraws the photo on a canvas before uploading it, which removes hidden data such as GPS location. Files are stored in the uploader's own folder under a random name, and the database accepts only photo addresses in the owner's folder.
-- **Keys.** The project uses only the publishable key, read from environment variables. The secret (service role) key is not used anywhere in this project. The owner's account id is compared on the server and is never sent to the browser.
+- **Keys.** The project uses only the publishable key, read from environment variables. The secret (service role) key is not used anywhere in this project. The owner's account id is compared on the server; the pages never send the owner column to the browser, although the id is the folder name in each photo's address.
 
 **Known gaps.** An edit made while I am reading a pending entry can be published without my seeing the newer text, because Publish does not check a version. The photo of a pending or returned entry can be opened by anyone who has its exact address. Returned entries stay in the database until their owners delete them.
 
@@ -96,7 +97,7 @@ All of the AI assistance on this project came from Claude Code, Anthropic's codi
 | Lab 2 (25 August) | Claude Sonnet 5 | The first `EntryCard` component |
 | Lab 3, Sprint 1 (6 September) | Claude Opus 5 | Real entries, browse, search and the empty state |
 | Lab 4 (12 September) | not recorded | Pagination and search highlighting |
-| Lab 5 to the final (19 September to 19 November) | Claude Opus 5.5 | Accounts, the database, photos and ownership, the review step, the fixes after each checklist, the final polish, the first draft of this README and a second check of every source |
+| Lab 5 to the final (19 September to 22 November) | Claude Opus 5.5 | Accounts, the database, photos and ownership, the review step, the fixes after each checklist, the final polish, the first draft of this README and a second check of every source |
 
 **What the model wrote, and what I kept.** The model drafted nearly all of the code and SQL. I kept what passed my checks, and I made the decisions about what to build, what to leave out and what each page should say. It also drafted the Khmer interface text, which I review as the Khmer reader on this project.
 
