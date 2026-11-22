@@ -11,7 +11,7 @@ const MESSAGES = {
     english: "Loading the games…",
   },
   empty: {
-    khmer: "មិនទាន់មានល្បែងនៅក្នុងបណ្ណសារនេះនៅឡើយទេ។",
+    khmer: "មិនទាន់មានល្បែងនៅក្នុងគេហទំព័រនេះនៅឡើយទេ។",
     english: "No games in this archive yet.",
   },
   unavailable: {

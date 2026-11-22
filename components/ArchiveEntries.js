@@ -41,7 +41,7 @@ export default async function ArchiveEntries() {
   return (
     <>
       <p style={styles.count}>
-        Games in the archive: {entries.length} · <span lang="km">ល្បែងក្នុងបណ្ណសារ៖ {entries.length}</span>
+        Games in the archive: {entries.length} · <span lang="km">ល្បែងក្នុងគេហទំព័រ៖ {entries.length}</span>
       </p>
       <ArchiveSearch entries={entries} />
     </>

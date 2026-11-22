@@ -11,7 +11,7 @@ const styles = {
 
 const TEXT = {
   pending:
-    "អ្នកទស្សនាមិនទាន់ឃើញល្បែងនេះទេ រហូតដល់អ្នកពិនិត្យបណ្ណសារផ្សាយវា · Visitors can't see this game until the archive's reviewer publishes it.",
+    "អ្នកទស្សនាមិនទាន់ឃើញល្បែងនេះទេ រហូតដល់អ្នកពិនិត្យគេហទំព័រផ្សាយវា · Visitors can't see this game until the archive's reviewer publishes it.",
   returned:
     "អ្នកពិនិត្យបានបញ្ជូនល្បែងនេះត្រឡប់មកវិញ។ សូមកែតាមកំណត់សម្គាល់ខាងក្រោម រួចរក្សាទុក ដើម្បីបញ្ជូនវាទៅពិនិត្យម្ដងទៀត · The reviewer sent this game back. Fix what the note asks, then save it to send it for review again.",
 };

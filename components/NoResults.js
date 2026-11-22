@@ -24,8 +24,8 @@ export default function NoResults({ query }) {
   return (
     <div style={styles.box}>
       <p lang="km" style={styles.khmer}>
-        រកមិនឃើញល្បែងដែលត្រូវនឹងពាក្យនេះទេ។ បណ្ណសារនេះមានតែល្បែងដែលមាននរណាម្នាក់បានរៀបរាប់ប៉ុណ្ណោះ។
-        បើអ្នកស្គាល់ល្បែងនេះ សូមបន្ថែមវាទៅក្នុងបណ្ណសារ។
+        រកមិនឃើញល្បែងដែលត្រូវនឹងពាក្យនេះទេ។ គេហទំព័រនេះមានតែល្បែងដែលមាននរណាម្នាក់បានរៀបរាប់ប៉ុណ្ណោះ។
+        បើអ្នកស្គាល់ល្បែងនេះ សូមបន្ថែមវាទៅក្នុងគេហទំព័រ។
       </p>
       <p style={styles.english}>
         No game matches <span style={styles.query}>{query}</span>. This archive
