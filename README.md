@@ -165,3 +165,22 @@ npm start        # serve the production build
 ```
 
 A new Supabase project also needs the tables, policies, bucket and function described in section 3.
+
+## 8. Submission checklist
+
+- Live URL loads logged out and shows published entries only: yes, https://khmer-archive.vercel.app/ (eight published games; checked 22 November 2026)
+- A stranger cannot publish their own entry through the page or the console: yes, tested 10 November 2026 (section 4)
+- Logged out, the API returns nothing pending or returned: yes, tested 22 November 2026 (a request for entries that are not published returned `[]`)
+- Contributors can edit and delete only their own entries: yes (policies in section 3; tested 10 November 2026, section 4)
+- No secrets anywhere in the repo history: yes, checked 22 November 2026 with `git log -p --all`, searching every commit on every branch for keys, tokens, passwords and the project address
+- At least eight real entries, each with a credited source: yes, 8 (section 6)
+- Khmer renders on every screen a user meets, including the queue: yes (section 2)
+- Works at phone width: yes, tested at 390 px in Microsoft Edge's mobile emulation (22 November 2026)
+- No test entries, lorem ipsum or TODO comments in shipped pages: yes
+- No console errors on the main pages: yes (checked 22 November 2026)
+- jesseorndorff is a collaborator on this repo: yes
+- Supabase project restored and awake on 22 November 2026
+- Demo video link opens in a private window: yes, https://drive.google.com/file/d/1sfBcf10lIcNKFojmUNwHPpXGNa8zRk4l/view?usp=sharing
+- Reflection pasted in the Canvas submission: yes
+- Posted in the Show Your Archive discussion: yes
+- Q&A slot booked for Friday 4 December 2026, 9:25 to 9:30 AM
